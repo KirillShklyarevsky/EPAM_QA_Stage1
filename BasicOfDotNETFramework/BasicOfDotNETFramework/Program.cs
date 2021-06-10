@@ -23,7 +23,7 @@ namespace BasicOfDotNETFramework
                 throw new ArgumentOutOfRangeException("System base must be in range from 2 to 20");
             }
 
-            if (number == 0 || number == 10)
+            if (number == 0 || systemBase == 10)
             {
                 return number.ToString();
             }
@@ -52,7 +52,7 @@ namespace BasicOfDotNETFramework
         public static string ConvertResidueToString(int residue)
         {
             string newSymbol = String.Empty;
-            if (residue > 10)
+            if (residue > 9)
             {
                 string valuesOver10 = "ABCDEFGIJI";
                 return newSymbol += valuesOver10[residue - 10];

@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace InterfacesAndAbstractClasses.Interfaces
+namespace InterfacesAndAbstractClasses
 {
     interface IFlyable
     {
+        void FlyTo(Coordinate coordinate);
+        DateTime GetFlyTime(Coordinate coordinate);
     }
 }

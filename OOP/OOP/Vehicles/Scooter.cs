@@ -5,7 +5,24 @@ namespace OOP
     [Serializable]
     public class Scooter : VehicleBase
     {
-        public double MaximumSpeed { get; set; }
+        private double _maximumSpeed;
+
+        public double MaximumSpeed
+        {
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException();
+                }
+                _maximumSpeed = value;
+            }
+
+            get
+            {
+                return _maximumSpeed;
+            }
+        }
 
         public Scooter() { }
 

@@ -5,7 +5,24 @@ namespace OOP
     [Serializable]
     public class Truck : VehicleBase
     {
-        public double MaximumLoad { get; set; }
+        private double _maximumLoad;
+
+        public double MaximumLoad
+        {
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException();
+                }
+                _maximumLoad = value;
+            }
+
+            get
+            {
+                return _maximumLoad;
+            }
+        }
 
         public Truck() { }
 

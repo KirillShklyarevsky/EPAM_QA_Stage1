@@ -5,7 +5,24 @@ namespace OOP
     [Serializable]
     public class Car : VehicleBase
     {
-        public int NumberOfDoors { get; set; }
+        private int _numberOfDoors;
+
+        public int NumberOfDoors
+        {
+            set
+            {
+                if (value < 1)
+                {
+                    throw new ArgumentException();
+                }
+                _numberOfDoors = value;
+            }
+
+            get
+            {
+                return _numberOfDoors;
+            }
+        }
 
         public Car() { }
 

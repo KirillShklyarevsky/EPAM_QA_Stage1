@@ -2,16 +2,28 @@
 
 namespace DevelopmentAndBuildTools
 {
-    class Program
+    public class CountOfSymbolsEntryPoint
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(MaxCountOfNonRepeatingSymbolsInARow(args[0]));
+            try
+            {
+                Console.WriteLine(MaxCountOfNonRepeatingSymbolsInARow(args[0]));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
-        static int MaxCountOfNonRepeatingSymbolsInARow(string line)
+        public static int MaxCountOfNonRepeatingSymbolsInARow(string line)
         {
-            if (string.IsNullOrEmpty(line))
+            if (line == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            if (line == string.Empty)
             {
                 return 0;
             }

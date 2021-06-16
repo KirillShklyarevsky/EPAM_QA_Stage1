@@ -2,7 +2,7 @@
 
 namespace BasicOfDotNETFramework
 {
-    class Program
+    public class ConverterEntryPoint
     {
         static void Main(string[] args)
         {
@@ -16,11 +16,16 @@ namespace BasicOfDotNETFramework
             }
         }
 
-        static string ConvertToAnotherSystem(int number, int systemBase)
+        public static string ConvertToAnotherSystem(int number, int systemBase)
         {
             if (systemBase > 20 || systemBase < 2)
             {
                 throw new ArgumentOutOfRangeException("System base must be in range from 2 to 20");
+            }
+
+            if (number < 0)
+            {
+                throw new ArgumentOutOfRangeException("Number must be positive");
             }
 
             if (number == 0 || systemBase == 10)
@@ -37,16 +42,8 @@ namespace BasicOfDotNETFramework
                 number = number / systemBase;
                 reversedNumberInBaseSystem += ConvertResidueToString(residue);
             }
-            
 
-            if (number < 0)
-            {
-                return $"-" + ReverseString(reversedNumberInBaseSystem);
-            }
-            else
-            {
-                return ReverseString(reversedNumberInBaseSystem);
-            }
+            return ReverseString(reversedNumberInBaseSystem);
         }
 
         public static string ConvertResidueToString(int residue)

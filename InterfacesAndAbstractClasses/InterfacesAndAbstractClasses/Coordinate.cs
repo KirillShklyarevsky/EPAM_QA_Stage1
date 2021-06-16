@@ -4,11 +4,57 @@ namespace InterfacesAndAbstractClasses
 {
     public class Coordinate
     {
-        public double X { get; set; }
+        private double _x;
+        private double _y;
+        private double _z;
 
-        public double Y { get; set; }
+        public double X
+        {
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException();
+                }
+                _x = value;
+            }
+            get
+            {
+                return _x;
+            }
+        }
 
-        public double Z { get; set; }
+        public double Y
+        {
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException();
+                }
+                _y = value;
+            }
+            get
+            {
+                return _y;
+            }
+        }
+
+        public double Z
+        {
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException();
+                }
+                _z = value;
+            }
+            get
+            {
+                return _z;
+            }
+        }
 
         public Coordinate(double x, double y, double z)
         {

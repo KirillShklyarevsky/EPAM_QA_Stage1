@@ -1,8 +1,13 @@
-﻿namespace OOP
+﻿using System;
+
+namespace OOP
 {
+    [Serializable]
     public class Truck : VehicleBase
     {
         public double MaximumLoad { get; set; }
+
+        public Truck() { }
 
         public Truck(double maximumLoad, Engine engine, Chassis chassis, Transmission transmission)
         : base(engine, chassis, transmission)

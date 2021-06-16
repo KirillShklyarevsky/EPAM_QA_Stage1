@@ -1,5 +1,8 @@
-﻿namespace OOP
+﻿using System;
+
+namespace OOP
 {
+    [Serializable]
     public class Engine
     {
         public double Power { get; set; }
@@ -9,7 +12,9 @@
         public EngineTypes EngineType { get; set; }
 
         public string SerialNumber { get; set; }
-        
+
+        public Engine() { }
+
         public Engine(double power, double capacity, EngineTypes engineType, string serialNumber)
         {
             Power = power;

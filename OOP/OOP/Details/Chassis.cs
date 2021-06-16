@@ -1,5 +1,8 @@
-﻿namespace OOP
+﻿using System;
+
+namespace OOP
 {
+    [Serializable]
     public class Chassis
     {
         public int NumberOfWheels { get; set; }
@@ -7,6 +10,8 @@
         public string SerialNumber { get; set; }
 
         public double PermissibleLoad { get; set; }
+
+        public Chassis() { }
 
         public Chassis(int numberOfWheels, string serialNumber, double permissibleLoad)
         {

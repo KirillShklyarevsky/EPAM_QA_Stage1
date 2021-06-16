@@ -1,5 +1,8 @@
-﻿namespace OOP
+﻿using System;
+
+namespace OOP
 {
+    [Serializable]
     public class Transmission
     {
         public TransmissionTypes TransmissionType { get; set; }
@@ -7,6 +10,8 @@
         public int NumberOfGears { get; set; }
 
         public string Manufacturer { get; set; }
+
+        public Transmission() { }
 
         public Transmission(TransmissionTypes transmissionType, int numberOfGears, string manufacturer)
         {

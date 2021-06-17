@@ -3,6 +3,9 @@ using System;
 
 namespace OOP
 {
+    /// <summary>
+    /// Class that contain entry point of program
+    /// </summary>
     class VehicleEntryPoint
     {
         static void Main(string[] args)

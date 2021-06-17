@@ -2,6 +2,9 @@
 
 namespace OOP
 {
+    /// <summary>
+    /// Class that define chassis
+    /// </summary>
     [Serializable]
     public class Chassis
     {
@@ -9,6 +12,9 @@ namespace OOP
         private string _serialNumber;
         private double _permissibleLoad;
 
+        /// <summary>
+        /// Method that set and get value of number of wheels field
+        /// </summary>
         public double NumberOfWheels
         {
             set
@@ -26,6 +32,9 @@ namespace OOP
             }
         }
 
+        /// <summary>
+        /// Method that set and get value of serial number field
+        /// </summary>
         public string SerialNumber
         {
             set
@@ -39,6 +48,9 @@ namespace OOP
             }
         }
 
+        /// <summary>
+        /// Method that set and get value of permissible field
+        /// </summary>
         public double PermissibleLoad
         {
             set
@@ -56,8 +68,17 @@ namespace OOP
             }
         }
 
+        /// <summary>
+        /// Default constructor 
+        /// </summary>
         public Chassis() { }
 
+        /// <summary>
+        /// Constructor initializes class fields
+        /// </summary>
+        /// <param name="numberOfWheels"></param>
+        /// <param name="serialNumber"></param>
+        /// <param name="permissibleLoad"></param>
         public Chassis(int numberOfWheels, string serialNumber, double permissibleLoad)
         {
             NumberOfWheels = numberOfWheels;
@@ -65,6 +86,10 @@ namespace OOP
             PermissibleLoad = permissibleLoad;
         }
 
+        /// <summary>
+        /// Method that returns all information about the object
+        /// </summary>
+        /// <returns></returns>
         public string GetInfo()
         {
             return ("Chassis info: Number of wheels: " + NumberOfWheels + " Serial number: " + SerialNumber

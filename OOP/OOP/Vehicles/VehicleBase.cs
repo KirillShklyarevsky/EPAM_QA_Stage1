@@ -3,6 +3,9 @@ using System.Xml.Serialization;
 
 namespace OOP
 {
+    /// <summary>
+    /// Abstract class that define vehicle
+    /// </summary>
     [XmlInclude(typeof(Car))]
     [XmlInclude(typeof(Truck))]
     [XmlInclude(typeof(Bus))]
@@ -16,8 +19,17 @@ namespace OOP
 
         public Transmission VehicleTransmission { get; set; }
 
+        /// <summary>
+        /// Default constructor 
+        /// </summary>
         public VehicleBase() { }
 
+        /// <summary>
+        /// Constructor initializes class fields
+        /// </summary>
+        /// <param name="engine"> Engine of vehicle </param>
+        /// <param name="chassis"> Chassis of vehicle </param>
+        /// <param name="transmission"> Transmission of vehicle </param>
         public VehicleBase(Engine engine, Chassis chassis, Transmission transmission)
         {
             VehicleEngine = engine;
@@ -25,6 +37,10 @@ namespace OOP
             VehicleTransmission = transmission;
         }
 
+        /// <summary>
+        /// Method that returns all information about the object
+        /// </summary>
+        /// <returns></returns>
         virtual public string GetInfo()
         {
             return $"{VehicleEngine.GetInfo()}\n" + $"{VehicleChassis.GetInfo()}\n" + $"{VehicleTransmission.GetInfo()}\n";

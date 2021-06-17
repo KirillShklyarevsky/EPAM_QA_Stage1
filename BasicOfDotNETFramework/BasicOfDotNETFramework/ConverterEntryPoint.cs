@@ -2,6 +2,9 @@
 
 namespace BasicOfDotNETFramework
 {
+    /// <summary>
+    /// Class that contains entry point of program and methods for converting numbers for from decimal system to other (2-20)
+    /// </summary>
     public class ConverterEntryPoint
     {
         static void Main(string[] args)
@@ -16,6 +19,12 @@ namespace BasicOfDotNETFramework
             }
         }
 
+        /// <summary>
+        /// Method for converting numbers for from decimal system to other (2-20)
+        /// </summary>
+        /// <param name="number"> Number to convert </param>
+        /// <param name="systemBase"> Base of new numeral system </param>
+        /// <returns></returns>
         public static string ConvertToAnotherSystem(int number, int systemBase)
         {
             if (systemBase > 20 || systemBase < 2)
@@ -46,6 +55,11 @@ namespace BasicOfDotNETFramework
             return ReverseString(reversedNumberInBaseSystem);
         }
 
+        /// <summary>
+        /// Method that convert residue if system base is greater than 10
+        /// </summary>
+        /// <param name="residue"> Residue of the division  </param>
+        /// <returns></returns>
         public static string ConvertResidueToString(int residue)
         {
             string newSymbol = String.Empty;
@@ -60,6 +74,11 @@ namespace BasicOfDotNETFramework
             }
         }
 
+        /// <summary>
+        /// Method that reverse string
+        /// </summary>
+        /// <param name="reversedNumberInBaseSystem"> String to reverse </param>
+        /// <returns></returns>
         public static string ReverseString(string reversedNumberInBaseSystem)
         {
             char[] arr = reversedNumberInBaseSystem.ToCharArray();

@@ -2,6 +2,9 @@
 
 namespace DevelopmentAndBuildTools
 {
+    /// <summary>
+    /// Class that contains entry point of program and method for calculating amount of different symbols in a row
+    /// </summary>
     public class CountOfSymbolsEntryPoint
     {
         static void Main(string[] args)
@@ -16,6 +19,11 @@ namespace DevelopmentAndBuildTools
             }
         }
 
+        /// <summary>
+        /// Method for calculating amount of different symbols in a row
+        /// </summary>
+        /// <param name="line"> Calculated string  </param>
+        /// <returns></returns>
         public static int MaxCountOfNonRepeatingSymbolsInARow(string line)
         {
             if (line == null)

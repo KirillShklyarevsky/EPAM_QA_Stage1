@@ -2,6 +2,9 @@
 
 namespace InterfacesAndAbstractClasses
 {
+    /// <summary>
+    /// Class that define drone
+    /// </summary>
     public class Drone : IFlyable
     {
         const double speed = 20;
@@ -9,13 +12,24 @@ namespace InterfacesAndAbstractClasses
         const double stopTime = 1 / 60;
         const double maximumRange = 1000;
 
+        /// <summary>
+        /// Method that set and return current position field value
+        /// </summary>
         public Coordinate CurrentPosition { get; set; }
 
+        /// <summary>
+        /// Constructor initializes class fields
+        /// </summary>
+        /// <param name="currentPosition"></param>
         public Drone(Coordinate currentPosition)
         {
             CurrentPosition = currentPosition;
         }
 
+        /// <summary>
+        /// Method for change the value of current position
+        /// </summary>
+        /// <param name="coordinate"></param>
         public void FlyTo(Coordinate coordinate)
         {
             if (coordinate.DistanceBetweenTwoPoint(CurrentPosition) > maximumRange)
@@ -25,6 +39,11 @@ namespace InterfacesAndAbstractClasses
             CurrentPosition = coordinate;
         }
 
+        /// <summary>
+        /// Method for getting flight time
+        /// </summary>
+        /// <param name="coordinate"></param>
+        /// <returns></returns>
         public DateTime GetFlyTime(Coordinate coordinate)
         {
             double distance = CurrentPosition.DistanceBetweenTwoPoint(coordinate);

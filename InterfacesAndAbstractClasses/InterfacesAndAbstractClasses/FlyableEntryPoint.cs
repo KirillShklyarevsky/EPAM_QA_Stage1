@@ -2,6 +2,9 @@
 
 namespace InterfacesAndAbstractClasses
 {
+    /// <summary>
+    /// Class that contain entry point of program
+    /// </summary>
     class FlyableEntryPoint
     {
         static void Main(string[] args)

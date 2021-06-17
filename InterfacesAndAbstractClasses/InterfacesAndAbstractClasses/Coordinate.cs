@@ -2,12 +2,18 @@
 
 namespace InterfacesAndAbstractClasses
 {
+    /// <summary>
+    /// Class that define coordinate
+    /// </summary>
     public class Coordinate
     {
         private double _x;
         private double _y;
         private double _z;
 
+        /// <summary>
+        /// Method that set and return field x value
+        /// </summary>
         public double X
         {
             set
@@ -24,6 +30,9 @@ namespace InterfacesAndAbstractClasses
             }
         }
 
+        /// <summary>
+        /// Method that set and return field y value
+        /// </summary>
         public double Y
         {
             set
@@ -40,6 +49,9 @@ namespace InterfacesAndAbstractClasses
             }
         }
 
+        /// <summary>
+        /// Method that set and return field z value
+        /// </summary>
         public double Z
         {
             set
@@ -56,6 +68,12 @@ namespace InterfacesAndAbstractClasses
             }
         }
 
+        /// <summary>
+        /// Constructor for structure coordinate
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
         public Coordinate(double x, double y, double z)
         {
             X = x;
@@ -63,6 +81,11 @@ namespace InterfacesAndAbstractClasses
             Z = z;
         }
 
+        /// <summary>
+        /// Method that calculates the distance between 2 points
+        /// </summary>
+        /// <param name="coordinate"> Coordinates of second point </param>
+        /// <returns></returns>
         public double DistanceBetweenTwoPoint(Coordinate coordinate)
         {
             return Math.Sqrt(Math.Pow(X - coordinate.X, 2) + Math.Pow(Y - coordinate.Y, 2) + Math.Pow(Z - coordinate.Z, 2));

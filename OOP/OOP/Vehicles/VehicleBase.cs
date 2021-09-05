@@ -39,7 +39,8 @@ namespace OOP
             VehicleEngine = engine;
             VehicleChassis = chassis;
             VehicleTransmission = transmission;
-            ID = _id++;
+            ID = _id;
+            _id++;
         }
 
         /// <summary>

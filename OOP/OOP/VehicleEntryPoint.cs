@@ -34,9 +34,11 @@ namespace OOP
 
                 List<VehicleBase> vehicles = new List<VehicleBase>() { bus, car, truck, scooter };
 
-                Serializer<VehicleBase>.Serialize("VehiclesWithEngineCapacityMoreThan1,5.xml", Helper.GetListOfVehiclesWithEngineCapacityMoreThan(1.5, vehicles));
-                Serializer<Engine>.Serialize("EngineTypeSerialNumberCapacityOfTruckAndBus.xml", Helper.GetListOfEngineTypeSerialNumberCapacityOfTruckAndBus(vehicles));
-                Serializer<VehicleBase>.Serialize("GroupedByTransmission.xml", Helper.GetListOfGroupedByTransmission(vehicles));
+                VehicleManager vehicleManager = new VehicleManager(vehicles);
+
+                Serializer<VehicleBase>.Serialize("VehiclesWithEngineCapacityMoreThan1,5.xml", Helper.GetListOfVehiclesWithEngineCapacityMoreThan(1.5, vehicleManager.Vehicles));
+                Serializer<Engine>.Serialize("EngineTypeSerialNumberCapacityOfTruckAndBus.xml", Helper.GetListOfEngineTypeSerialNumberCapacityOfTruckAndBus(vehicleManager.Vehicles));
+                Serializer<VehicleBase>.Serialize("GroupedByTransmission.xml", Helper.GetListOfGroupedByTransmission(vehicleManager.Vehicles));
             }
             catch (Exception ex)
             {

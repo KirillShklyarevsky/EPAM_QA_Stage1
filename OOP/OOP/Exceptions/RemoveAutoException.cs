@@ -2,6 +2,7 @@
 
 namespace OOP.Exceptions
 {
+    [Serializable]
     public class RemoveAutoException : Exception
     {
         public RemoveAutoException() { }

@@ -2,6 +2,7 @@
 
 namespace OOP.Exceptions
 {
+    [Serializable]
     public class GetAutoByParameterException : Exception
     {
         public GetAutoByParameterException() { }

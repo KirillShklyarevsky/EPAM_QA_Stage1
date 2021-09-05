@@ -13,11 +13,15 @@ namespace OOP
     [Serializable]
     public abstract class VehicleBase
     {
+        private int _id = 1;
+
         public Engine VehicleEngine { get; set; }
 
         public Chassis VehicleChassis { get; set; }
 
         public Transmission VehicleTransmission { get; set; }
+
+        public int ID { get; private set; }
 
         /// <summary>
         /// Default constructor 
@@ -35,6 +39,7 @@ namespace OOP
             VehicleEngine = engine;
             VehicleChassis = chassis;
             VehicleTransmission = transmission;
+            ID = _id++;
         }
 
         /// <summary>

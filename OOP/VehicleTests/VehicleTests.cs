@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OOP;
+using OOP.Exceptions;
 using System;
 
 namespace VehicleTests
@@ -55,7 +56,7 @@ namespace VehicleTests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(InitializationException))]
         public void CarThrowExceptionIfArgumetsNotValid()
         {
             Car car = new Car(-1,
@@ -65,7 +66,7 @@ namespace VehicleTests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(InitializationException))]
         public void TruckThrowExceptionIfArgumetsNotValid()
         {
             Truck truck = new Truck(-1,
@@ -75,7 +76,7 @@ namespace VehicleTests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(InitializationException))]
         public void BusThrowExceptionIfArgumetsNotValid()
         {
             Bus bus = new Bus(-1,
@@ -85,7 +86,7 @@ namespace VehicleTests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(InitializationException))]
         public void ScooterThrowExceptionIfArgumetsNotValid()
         {
             Scooter scooter = new Scooter(-1,

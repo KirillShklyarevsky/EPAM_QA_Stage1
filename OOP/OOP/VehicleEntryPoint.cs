@@ -2,8 +2,8 @@
 using System;
 
 namespace OOP
-{
     /// <summary>
+{
     /// Class that contain entry point of program
     /// </summary>
     class VehicleEntryPoint
@@ -34,9 +34,9 @@ namespace OOP
 
                 List<VehicleBase> vehicles = new List<VehicleBase>() { bus, car, truck, scooter };
 
-                Serializer<VehicleBase>.Serialize("VehiclesWithEngineCapacityMoreThan1,5.xml", Helper.VehiclesWithEngineCapacityMoreThan(1.5, vehicles));
-                Serializer<Engine>.Serialize("EngineTypeSerialNumberCapacityOfTruckAndBus.xml", Helper.EngineTypeSerialNumberCapacityOfTruckAndBus(vehicles));
-                Serializer<VehicleBase>.Serialize("GroupedByTransmission.xml", Helper.GroupedByTransmission(vehicles));
+                Serializer<VehicleBase>.Serialize("VehiclesWithEngineCapacityMoreThan1,5.xml", Helper.GetListOfVehiclesWithEngineCapacityMoreThan(1.5, vehicles));
+                Serializer<Engine>.Serialize("EngineTypeSerialNumberCapacityOfTruckAndBus.xml", Helper.GetListOfEngineTypeSerialNumberCapacityOfTruckAndBus(vehicles));
+                Serializer<VehicleBase>.Serialize("GroupedByTransmission.xml", Helper.GetListOfGroupedByTransmission(vehicles));
             }
             catch (Exception ex)
             {

@@ -1,4 +1,5 @@
 ﻿using System;
+using OOP.Exceptions;
 
 namespace OOP
 {
@@ -19,7 +20,7 @@ namespace OOP
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException();
+                    throw new InitializationException("Unable to initialize the scooter.");
                 }
                 _maximumSpeed = value;
             }

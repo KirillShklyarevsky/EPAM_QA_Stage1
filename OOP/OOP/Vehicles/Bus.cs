@@ -1,4 +1,5 @@
 ﻿using System;
+using OOP.Exceptions;
 
 namespace OOP
 {
@@ -19,7 +20,7 @@ namespace OOP
             {
                 if (value < 1)
                 {
-                    throw new ArgumentException();
+                    throw new InitializationException("Unable to initialize the bus.");
                 }
                 _seatsNumber = value;
             }

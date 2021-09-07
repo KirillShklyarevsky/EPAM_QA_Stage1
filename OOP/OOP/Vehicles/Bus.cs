@@ -20,7 +20,7 @@ namespace OOP
             {
                 if (value < 1)
                 {
-                    throw new InitializationException("Unable to initialize the bus.");
+                    throw new InitializationException("bus");
                 }
                 _seatsNumber = value;
             }

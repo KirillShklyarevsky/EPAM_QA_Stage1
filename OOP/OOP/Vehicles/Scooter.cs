@@ -20,7 +20,7 @@ namespace OOP
             {
                 if (value < 0)
                 {
-                    throw new InitializationException("Unable to initialize the scooter.");
+                    throw new InitializationException("scooter");
                 }
                 _maximumSpeed = value;
             }

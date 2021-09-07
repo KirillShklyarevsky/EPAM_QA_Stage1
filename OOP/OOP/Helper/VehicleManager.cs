@@ -24,7 +24,7 @@ namespace OOP
         {
             if (!IsContain(vehicle))
             {
-                throw new AddException("Unable to add new car model");
+                throw new AddException();
             }
 
             Vehicles.Add(vehicle);
@@ -34,7 +34,7 @@ namespace OOP
         {
             if (Vehicles.Select(x => GetPropertyByName(parameter, x)).Where(p => !(p is null)).Count() == 0)
             {
-                throw new GetAutoByParameterException("Unable to find a model with such parameter");
+                throw new GetAutoByParameterException();
             }
 
             return Vehicles.Where(x => GetPropertyValue(parameter, x) == value).ToList();
@@ -61,7 +61,7 @@ namespace OOP
         {
             if (!Vehicles.Select(x => x.ID).Contains(id))
             {
-                throw new UpdateAutoException("The car with current ID doesn't exist");
+                throw new UpdateAutoException();
             }
 
             Vehicles[id] = vehicle;
@@ -71,7 +71,7 @@ namespace OOP
         {
             if (!Vehicles.Select(x => x.ID).Contains(id))
             {
-                throw new UpdateAutoException("The car with current ID doesn't exist");
+                throw new UpdateAutoException();
             }
 
             Vehicles.RemoveAt(id);

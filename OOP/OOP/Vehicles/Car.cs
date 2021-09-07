@@ -20,7 +20,7 @@ namespace OOP
             {
                 if (value < 1)
                 {
-                    throw new InitializationException("Unable to initialize the car.");
+                    throw new InitializationException("car");
                 }
                 _numberOfDoors = value;
             }

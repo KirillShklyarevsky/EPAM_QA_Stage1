@@ -20,7 +20,7 @@ namespace OOP
             {
                 if (value < 0)
                 {
-                    throw new InitializationException("Unable to initialize the truck.");
+                    throw new InitializationException("truck");
                 }
                 _maximumLoad = value;
             }

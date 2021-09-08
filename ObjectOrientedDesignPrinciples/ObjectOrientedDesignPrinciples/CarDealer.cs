@@ -27,6 +27,7 @@ namespace ObjectOrientedDesignPrinciples
         public void AddCar(Car car)
         {
             _cars.Add(car);
+            Console.WriteLine("Car added");
         }
 
         public int GetCountTypes()

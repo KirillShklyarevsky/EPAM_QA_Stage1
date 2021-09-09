@@ -1,5 +1,4 @@
-﻿using System;
-using ObjectOrientedDesignPrinciples.Interfaces;
+﻿using ObjectOrientedDesignPrinciples.Interfaces;
 
 namespace ObjectOrientedDesignPrinciples.Commands
 {
@@ -7,7 +6,7 @@ namespace ObjectOrientedDesignPrinciples.Commands
     {
         public void Execute()
         {
-            Console.WriteLine($"Average price : {CarDealer.GetCarDealer().GetAveragePrice()}");
+            System.Console.WriteLine($"Average price : {CarDealer.GetCarDealer().GetAveragePrice()}");
         }
     }
 }

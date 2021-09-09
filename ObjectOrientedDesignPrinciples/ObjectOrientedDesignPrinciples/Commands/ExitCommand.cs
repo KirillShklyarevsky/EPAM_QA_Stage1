@@ -1,5 +1,4 @@
-﻿using System;
-using ObjectOrientedDesignPrinciples.Interfaces;
+﻿using ObjectOrientedDesignPrinciples.Interfaces;
 
 namespace ObjectOrientedDesignPrinciples.Commands
 {
@@ -7,7 +6,7 @@ namespace ObjectOrientedDesignPrinciples.Commands
     {
         public void Execute()
         {
-            Environment.Exit(0);
+            System.Environment.Exit(0);
         }
     }
 }

@@ -11,9 +11,14 @@ namespace ObjectOrientedDesignPrinciples
             _command = command;
         }
 
-        public void RunCommand(CarDealer carDealer)
+        public void RunCommand()
         {
-            _command.Execute(carDealer);
+            if (_command == null)
+            {
+                return;
+            }
+
+            _command.Execute();
         }
     }
 }

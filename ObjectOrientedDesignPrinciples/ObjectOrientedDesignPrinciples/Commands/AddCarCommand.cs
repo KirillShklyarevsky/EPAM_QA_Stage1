@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ObjectOrientedDesignPrinciples.Interfaces;
+﻿using ObjectOrientedDesignPrinciples.Interfaces;
 
 namespace ObjectOrientedDesignPrinciples.Commands
 {
@@ -14,9 +11,10 @@ namespace ObjectOrientedDesignPrinciples.Commands
             _car = car;
         }
 
-        public void Execute(CarDealer carDealer)
+        public void Execute()
         {
-            carDealer.AddCar(_car);
+            CarDealer.GetCarDealer().AddCar(_car);
+            System.Console.WriteLine("Car added");
         }
     }
 }

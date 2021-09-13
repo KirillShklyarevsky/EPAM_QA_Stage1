@@ -5,7 +5,8 @@ namespace ObjectOrientedDesignPrinciples
 {
     public class CarDealer
     {
-        private static CarDealer _carDealer;
+        private static CarDealer _carDealer = null;
+        private static object _locker = new object();
 
         private List<Car> _cars;
 
@@ -16,11 +17,14 @@ namespace ObjectOrientedDesignPrinciples
 
         public static CarDealer GetCarDealer()
         {
-            if (_carDealer == null)
+            lock (_locker)
             {
-                _carDealer = new CarDealer();
+                if (_carDealer == null)
+                {
+                    _carDealer = new CarDealer();
+                }
+                return _carDealer;
             }
-            return _carDealer;
         }
 
         public void AddCar(Car car)

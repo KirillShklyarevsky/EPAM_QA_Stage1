@@ -5,19 +5,19 @@ using System;
 namespace CharCountTests
 {
     [TestClass]
-    public class CountOfSymbolsTests
+    public class CountOfNonRepeatingSymbolsTests
     {
         [TestMethod]
         public void CountOfNonRepeatingSymbolsInEmptyString()
         {
-            Assert.AreEqual(0, CountOfSymbolsEntryPoint.MaxCountOfNonRepeatingSymbolsInARow(string.Empty));
+            Assert.AreEqual(0, SymbolsCounter.GetMaxCountOfNonRepeatingSymbolsInARow(string.Empty));
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void ShouldThrowArgumentNullException()
         {
-            CountOfSymbolsEntryPoint.MaxCountOfNonRepeatingSymbolsInARow(null);
+            SymbolsCounter.GetMaxCountOfNonRepeatingSymbolsInARow(null);
         }
 
         [DataTestMethod]
@@ -27,7 +27,7 @@ namespace CharCountTests
         [DataRow("aba", 3)]
         public void CountOfNonRepeatingSymbolsInCorrectString(string data, int expected)
         {
-            Assert.AreEqual(expected, CountOfSymbolsEntryPoint.MaxCountOfNonRepeatingSymbolsInARow(data));
+            Assert.AreEqual(expected, SymbolsCounter.GetMaxCountOfNonRepeatingSymbolsInARow(data));
         }
     }
 }

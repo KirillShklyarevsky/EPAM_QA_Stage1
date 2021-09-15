@@ -73,7 +73,15 @@ namespace DevelopmentAndBuildTools
                 }
                 else
                 {
-                    count = 1;
+                    if (!IsSymbolIsLatinLetter(currentSymbol))
+                    {
+                        count = 0;
+                    }
+                    else
+                    {
+                        count = 1;
+                    }
+
                     previousSymbol = currentSymbol;
                 }
 
@@ -117,7 +125,15 @@ namespace DevelopmentAndBuildTools
                 }
                 else
                 {
-                    count = 1;
+                    if (!char.IsDigit(currentSymbol))
+                    {
+                        count = 0;
+                    }
+                    else
+                    {
+                        count = 1;
+                    }
+
                     previousSymbol = currentSymbol;
                 }
 

@@ -22,6 +22,7 @@ namespace CharCountTests
 
         [DataTestMethod]
         [DataRow("a", 1)]
+        [DataRow("1", 0)]
         [DataRow("abc", 3)]
         [DataRow("abc1", 3)]
         [DataRow("abc1abcd", 4)]

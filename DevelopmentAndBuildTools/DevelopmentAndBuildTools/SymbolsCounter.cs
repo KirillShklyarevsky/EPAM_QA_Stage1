@@ -13,7 +13,7 @@ namespace DevelopmentAndBuildTools
         {
             if (line == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(nameof(line));
             }
 
             if (line == string.Empty)
@@ -51,7 +51,7 @@ namespace DevelopmentAndBuildTools
         {
             if (line == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(nameof(line));
             }
 
             if (line == string.Empty)
@@ -103,7 +103,7 @@ namespace DevelopmentAndBuildTools
         {
             if (line == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(nameof(line));
             }
 
             if (line == string.Empty)

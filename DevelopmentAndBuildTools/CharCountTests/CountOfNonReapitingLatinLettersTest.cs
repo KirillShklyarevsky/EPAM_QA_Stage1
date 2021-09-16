@@ -10,13 +10,21 @@ namespace CharCountTests
         [TestMethod]
         public void CountOfNonRepeatingSymbolsInEmptyString()
         {
-            Assert.AreEqual(0, SymbolsCounter.GetMaxCountOfNonRepeatingNumbersInARow(string.Empty));
+            // arrange
+            int expected = 0;
+
+            // act
+            int actual = SymbolsCounter.GetMaxCountOfNonRepeatingNumbersInARow(string.Empty);
+
+            // assert
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void ShouldThrowArgumentNullException()
         {
+            // act
             SymbolsCounter.GetMaxCountOfNonRepeatingNumbersInARow(null);
         }
 
@@ -28,7 +36,11 @@ namespace CharCountTests
         [DataRow("abc1abcd", 4)]
         public void CountOfNonRepeatingLatinLettersInCorrectString(string data, int expected)
         {
-            Assert.AreEqual(expected, SymbolsCounter.GetMaxCountOfNonRepeatingLatinLettersInARow(data));
+            // act
+            int actual = SymbolsCounter.GetMaxCountOfNonRepeatingLatinLettersInARow(data);
+
+            // assert
+            Assert.AreEqual(expected, actual);
         }
     }
 }

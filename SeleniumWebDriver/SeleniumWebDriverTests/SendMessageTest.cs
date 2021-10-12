@@ -25,23 +25,25 @@ namespace SeleniumWebDriverTests
         }
 
         [Test]
-        public void SendMessage()
-        {
-            SeleniumWebDriver.MailRu.LoginPage loginPage = new SeleniumWebDriver.MailRu.LoginPage(_driver);
-            SeleniumWebDriver.MailRu.InboxPage inboxPage = loginPage.LogIn(_username, _password);
-            inboxPage.SendMessage(_text, _receiverMail);
-        }
-
-        [Test]
         public void LogInToGmail()
         {
+            //arrange
+            SeleniumWebDriver.MailRu.LoginPage mailRuLoginPage = new SeleniumWebDriver.MailRu.LoginPage(_driver);
+
+            //act
+            SeleniumWebDriver.MailRu.InboxPage mailRuInboxPage = mailRuLoginPage.LogIn(_username, _password);
+            mailRuInboxPage.SendMessage(_text, _receiverMail);
             _driver.Navigate().GoToUrl(_loginGmailPagePath);
-            SeleniumWebDriver.Gmail.LoginPage loginPage = new SeleniumWebDriver.Gmail.LoginPage(_driver);
-            SeleniumWebDriver.Gmail.InboxPage inboxPage = loginPage.LogIn(_receiverMail, _password);
-            inboxPage.ReadLastMessage();
-            inboxPage.ReplyMessage();
-            inboxPage.EnterMessageText("Aaa Bbb");
-            inboxPage.SendMessage();
+            SeleniumWebDriver.Gmail.LoginPage gmailLoginPage = new SeleniumWebDriver.Gmail.LoginPage(_driver);
+            SeleniumWebDriver.Gmail.InboxPage gmailInboxPage = gmailLoginPage.LogIn(_receiverMail, _password);
+            gmailInboxPage.ReadLastMessage();
+            string actual = gmailInboxPage.GetMessageContent();
+            gmailInboxPage.ReplyMessage();
+            gmailInboxPage.EnterMessageText("Aaa Bbb");
+            gmailInboxPage.SendMessage();
+
+            //assert
+            Assert.AreEqual(_text, actual);
         }
 
         [TearDown]

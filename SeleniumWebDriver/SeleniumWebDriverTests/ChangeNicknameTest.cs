@@ -23,7 +23,10 @@ namespace SeleniumWebDriverTests
         [Test]
         public void LogInToGmail()
         {
+            //arrange
             LoginPage loginPage = new LoginPage(_driver);
+
+            //act
             InboxPage inboxPage = loginPage.LogIn(_username, _password);
             inboxPage.ReadLastMessage();
             string expected = inboxPage.GetMessageContent();
@@ -33,13 +36,15 @@ namespace SeleniumWebDriverTests
             settingsPage.RenameUser(newNickname[0], newNickname[1]);
             _driver.Navigate().Refresh();
             string actualNickname = settingsPage.ReadNickname();
+
+            //assert
             Assert.AreEqual(expected, actualNickname);
         }
 
         [TearDown]
         public void DriverQuit()
         {
-          //  _driver.Quit();
+            _driver.Quit();
         }
     }
 }

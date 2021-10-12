@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumWebDriver.MailRu
 {
     public class InboxPage : BasePage
     {
-        By _composeMessageButtonLocator = By.XPath("//a[@title='Написать письмо']");
-        By receiverMailInputLocator = By.XPath("//input[@tabindex='100']");
-        By textBoxLocator = By.XPath("//div[@role='textbox']");
-        By sendMessageLocator = By.XPath("//span[@title='Отправить']");
-        private readonly By lastMessageLocator = By.XPath("//div[@class='dataset__items']/a[contains(@class,'letter-bottom')][1]");
-        By messageTextLocator = By.XPath("//div[@dir='ltr']");
-        By optionsButtonLocator = By.XPath("//div[@class='ph-auth svelte-1xjymf4']");
-        By settingsButtonLocator = By.XPath("//div[text()='Личные данные']");
-        
 
-        private const string _driverTitle = "Входящие";
+        private readonly string _driverTitle = "Входящие";
+        private readonly By _composeMessageButtonLocator = By.XPath("//span[text()='Написать письмо']");
+        private readonly By _receiverMailInputLocator = By.XPath("//input[@tabindex='100']");
+        private readonly By _textBoxLocator = By.XPath("//div[@role='textbox']");
+        private readonly By _sendMessageLocator = By.XPath("//span[@title='Отправить']");
+        private readonly By _lastMessageLocator = By.XPath("//div[@class='dataset__items']/a[contains(@class,'letter-bottom')][1]");
+        private readonly By _messageTextLocator = By.XPath("//div[@dir='ltr']");
+        private readonly By _optionsButtonLocator = By.XPath("//div[@class='ph-auth svelte-1xjymf4']");
+        private readonly By _settingsButtonLocator = By.XPath("//div[text()='Личные данные']");
 
         public InboxPage(IWebDriver driver) : base(driver)
         {
@@ -35,23 +31,23 @@ namespace SeleniumWebDriver.MailRu
 
         public InboxPage EnterReceiverMail(string receiverMail)
         {
-            Wait.Until(ExpectedConditions.ElementIsVisible(receiverMailInputLocator));
-            Driver.FindElement(receiverMailInputLocator).SendKeys(receiverMail);
+            Wait.Until(ExpectedConditions.ElementIsVisible(_receiverMailInputLocator));
+            Driver.FindElement(_receiverMailInputLocator).SendKeys(receiverMail);
 
             return this;
         }
 
         public InboxPage EnterText(string text)
         {
-            Wait.Until(ExpectedConditions.ElementIsVisible(textBoxLocator));
-            Driver.FindElement(textBoxLocator).SendKeys(text);
+            Wait.Until(ExpectedConditions.ElementIsVisible(_textBoxLocator));
+            Driver.FindElement(_textBoxLocator).SendKeys(text);
 
             return this;
         }
         public InboxPage PressSendMessageButton()
         {
-            Wait.Until(ExpectedConditions.ElementIsVisible(sendMessageLocator));
-            Driver.FindElement(sendMessageLocator).Click();
+            Wait.Until(ExpectedConditions.ElementIsVisible(_sendMessageLocator));
+            Driver.FindElement(_sendMessageLocator).Click();
 
             return this;
         }
@@ -68,30 +64,30 @@ namespace SeleniumWebDriver.MailRu
 
         public InboxPage ReadLastMessage()
         {
-            Wait.Until(ExpectedConditions.ElementIsVisible(lastMessageLocator));
-            Driver.FindElement(lastMessageLocator).Click();
+            Wait.Until(ExpectedConditions.ElementIsVisible(_lastMessageLocator));
+            Driver.FindElement(_lastMessageLocator).Click();
 
             return this;
         }
 
         public string GetMessageContent()
         {
-            Wait.Until(ExpectedConditions.ElementIsVisible(messageTextLocator));
-            return Driver.FindElement(messageTextLocator).Text;
+            Wait.Until(ExpectedConditions.ElementIsVisible(_messageTextLocator));
+            return Driver.FindElement(_messageTextLocator).Text;
         }
 
         public InboxPage OpenOptions()
         {
-            Wait.Until(ExpectedConditions.ElementIsVisible(optionsButtonLocator));
-            Driver.FindElement(optionsButtonLocator).Click();
+            Wait.Until(ExpectedConditions.ElementIsVisible(_optionsButtonLocator));
+            Driver.FindElement(_optionsButtonLocator).Click();
 
             return this;
         }
 
         public SettingsPage OpenSettings()
         {
-            Wait.Until(ExpectedConditions.ElementIsVisible(settingsButtonLocator));
-            Driver.FindElement(settingsButtonLocator).Click();
+            Wait.Until(ExpectedConditions.ElementIsVisible(_settingsButtonLocator));
+            Driver.FindElement(_settingsButtonLocator).Click();
 
             return new SettingsPage(Driver);
         }

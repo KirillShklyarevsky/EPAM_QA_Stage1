@@ -3,7 +3,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumWebDriver.MailRu
 {
-    public class BasePage
+    public abstract class BasePage
     {
         private readonly int _webDriverWaitTime = 15;
 

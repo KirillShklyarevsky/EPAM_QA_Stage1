@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumWebDriver.MailRu
 {
     public class SettingsPage : BasePage
     {
-        private const string _driverTitle = "Личные данные";
-        By userFirstnameLocator = By.XPath("//input[@id='firstname']");
-        By userLastnameLocator = By.XPath("//input[@id='lastname']");
-        By userNicknameLocator = By.XPath("//input[@id='nickname']");//value
-        By saveButtonLocator = By.XPath("//span[text()='Сохранить']");
+        private readonly string _driverTitle = "Личные данные";
+        private readonly By userFirstnameLocator = By.XPath("//input[@id='firstname']");
+        private readonly By userLastnameLocator = By.XPath("//input[@id='lastname']");
+        private readonly By saveButtonLocator = By.XPath("//span[text()='Сохранить']");
 
         public SettingsPage(IWebDriver driver) : base(driver)
         {
@@ -51,7 +47,8 @@ namespace SeleniumWebDriver.MailRu
             Wait.Until(ExpectedConditions.ElementIsVisible(userLastnameLocator));
             string firstname = Driver.FindElement(userFirstnameLocator).GetAttribute("value");
             string lastname = Driver.FindElement(userLastnameLocator).GetAttribute("value");
-            return firstname + " " + lastname;
+
+            return (firstname + " " + lastname);
         }
 
         public SettingsPage RenameUser(string firstname, string lastname)

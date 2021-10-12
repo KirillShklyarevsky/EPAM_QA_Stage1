@@ -4,16 +4,14 @@ using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace SeleniumWebDriver.MailRu
+namespace SeleniumWebDriver.Gmail
 {
     public class LoginPage : BasePage
     {
-        By usernameLocator = By.XPath("//input[@name='username']");
-        By enterPasswordButtonLocator = By.XPath("//button[@type='submit']");
+        By usernameLocator = By.XPath("//input[@type='email']");
+        By enterPasswordButtonLocator = By.XPath("//span[text()='Далее']");
         By passwordLocator = By.XPath("//input[@name='password']");
-        By logInButtonLocator = By.XPath("//span[text()='Войти']");
-        By errorMessage = By.XPath("//div[contains(@data-test-id,'error')]/small");
-        private const string _driverTitle = "Авторизация";
+        private const string _driverTitle = "Gmail";
 
         public LoginPage(IWebDriver driver) : base(driver)
         {
@@ -46,8 +44,8 @@ namespace SeleniumWebDriver.MailRu
 
         public InboxPage PressLogInButton()
         {
-            Wait.Until(ExpectedConditions.ElementIsVisible(logInButtonLocator));
-            Driver.FindElement(logInButtonLocator).Click();
+            Wait.Until(ExpectedConditions.ElementIsVisible(enterPasswordButtonLocator));
+            Driver.FindElement(enterPasswordButtonLocator).Click();
 
             return new InboxPage(Driver);
         }
@@ -59,13 +57,5 @@ namespace SeleniumWebDriver.MailRu
             EnterPassword(password);
             return PressLogInButton();
         }
-
-        public string GetErrorMessage()
-        {
-            Wait.Until(ExpectedConditions.ElementIsVisible(errorMessage));
-
-            return Driver.FindElement(errorMessage).Text;
-        }
-
     }
 }

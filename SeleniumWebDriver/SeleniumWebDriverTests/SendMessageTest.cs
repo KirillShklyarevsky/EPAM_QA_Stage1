@@ -47,7 +47,7 @@ namespace SeleniumWebDriverTests
         [TearDown]
         public void DriverQuit()
         {
-          // _driver.Quit();
+            _driver.Quit();
         }
     }
 }

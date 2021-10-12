@@ -8,10 +8,16 @@ namespace SeleniumWebDriver.MailRu
 {
     public class InboxPage : BasePage
     {
-        By composeMessageButtonLocator = By.XPath("//a[@title='Написать письмо']");
+        By _composeMessageButtonLocator = By.XPath("//a[@title='Написать письмо']");
         By receiverMailInputLocator = By.XPath("//input[@tabindex='100']");
         By textBoxLocator = By.XPath("//div[@role='textbox']");
         By sendMessageLocator = By.XPath("//span[@title='Отправить']");
+        private readonly By lastMessageLocator = By.XPath("//div[@class='dataset__items']/a[contains(@class,'letter-bottom')][1]");
+        By messageTextLocator = By.XPath("//div[@dir='ltr']");
+        By optionsButtonLocator = By.XPath("//div[@class='ph-auth svelte-1xjymf4']");
+        By settingsButtonLocator = By.XPath("//div[text()='Личные данные']");
+        
+
         private const string _driverTitle = "Входящие";
 
         public InboxPage(IWebDriver driver) : base(driver)
@@ -21,8 +27,8 @@ namespace SeleniumWebDriver.MailRu
 
         public InboxPage ComposeMessage()
         {
-            Wait.Until(ExpectedConditions.ElementIsVisible(composeMessageButtonLocator));
-            Driver.FindElement(composeMessageButtonLocator).Click();
+            Wait.Until(ExpectedConditions.ElementIsVisible(_composeMessageButtonLocator));
+            Driver.FindElement(_composeMessageButtonLocator).Click();
 
             return this;
         }
@@ -58,6 +64,36 @@ namespace SeleniumWebDriver.MailRu
             PressSendMessageButton();
 
             return this;
+        }
+
+        public InboxPage ReadLastMessage()
+        {
+            Wait.Until(ExpectedConditions.ElementIsVisible(lastMessageLocator));
+            Driver.FindElement(lastMessageLocator).Click();
+
+            return this;
+        }
+
+        public string GetMessageContent()
+        {
+            Wait.Until(ExpectedConditions.ElementIsVisible(messageTextLocator));
+            return Driver.FindElement(messageTextLocator).Text;
+        }
+
+        public InboxPage OpenOptions()
+        {
+            Wait.Until(ExpectedConditions.ElementIsVisible(optionsButtonLocator));
+            Driver.FindElement(optionsButtonLocator).Click();
+
+            return this;
+        }
+
+        public SettingsPage OpenSettings()
+        {
+            Wait.Until(ExpectedConditions.ElementIsVisible(settingsButtonLocator));
+            Driver.FindElement(settingsButtonLocator).Click();
+
+            return new SettingsPage(Driver);
         }
     }
 }

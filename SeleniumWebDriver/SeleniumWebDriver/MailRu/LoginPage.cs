@@ -10,7 +10,7 @@ namespace SeleniumWebDriver.MailRu
         private readonly By _enterPasswordButtonLocator = By.XPath("//button[@type='submit']");
         private readonly By _passwordLocator = By.XPath("//input[@name='password']");
         private readonly By _logInButtonLocator = By.XPath("//span[text()='Войти']");
-        private readonly By _errorMessage = By.XPath("//div[contains(@data-test-id,'error')]/small"); //  
+        private readonly By _errorMessage = By.XPath("//div[contains(@data-test-id,'error')]/small");   
 
         public LoginPage(IWebDriver driver) : base(driver)
         {

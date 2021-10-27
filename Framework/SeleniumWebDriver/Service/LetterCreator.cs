@@ -2,7 +2,7 @@
 
 namespace SeleniumWebDriver.Service
 {
-    public static class LetterCreator
+    public class LetterCreator
     {
         public static Letter CreateLetter()
         {

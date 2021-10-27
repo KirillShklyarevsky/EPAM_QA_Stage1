@@ -14,6 +14,8 @@ namespace SeleniumWebDriverTests
         private const string _errorIncorrectPasswordMessage = "Неверный пароль, попробуйте ещё раз";
 
         [Test]
+        [Category("All")]
+        [Category("Smoke")]
         public void LogInWithValidUsernameAndPassword()
         {
             //arrange
@@ -28,6 +30,7 @@ namespace SeleniumWebDriverTests
         }
 
         [Test]
+        [Category("Smoke")]
         public void LogInWithEmptyUsername()
         {
             //arrange
@@ -44,6 +47,7 @@ namespace SeleniumWebDriverTests
         }
 
         [Test]
+        [Category("All")]
         public void LogInWithEmptyPassword()
         {
             //arrange
@@ -62,6 +66,7 @@ namespace SeleniumWebDriverTests
         }
 
         [Test]
+        [Category("All")]
         public void LogInWithIvalidUsername()
         {
             //arrange
@@ -79,6 +84,7 @@ namespace SeleniumWebDriverTests
         }
 
         [Test]
+        [Category("All")]
         public void LogInWithInvalidPassword()
         {
             //arrange

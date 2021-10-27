@@ -10,6 +10,7 @@ namespace SeleniumWebDriverTests
         private const string _text = "Hello World";
 
         [Test]
+        [Category("All")]
         public void LogInToGmail()
         {
             //arrange

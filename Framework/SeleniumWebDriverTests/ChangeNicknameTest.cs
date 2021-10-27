@@ -9,6 +9,7 @@ namespace SeleniumWebDriverTests
     public class ChangeNicknameTest : CommonConditions
     {
         [Test]
+        [Category("All")]
         public void LogInToGmail()
         {
             //arrange

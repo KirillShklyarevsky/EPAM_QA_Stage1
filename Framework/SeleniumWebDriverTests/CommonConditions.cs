@@ -1,10 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using SeleniumWebDriver.Driver;
 
 namespace SeleniumWebDriverTests
 {
-    class CommonConditions
+    public class CommonConditions
     {
+        protected IWebDriver _driver;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _driver = DriverSingleton.GetDriver();
+        }
     }
 }

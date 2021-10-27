@@ -5,6 +5,7 @@ namespace SeleniumWebDriver.Gmail
 {
     public class LoginPage : BasePage
     {
+        private const string _loginPagePath = "https:/google.com/mail";
         private const string _driverTitle = "Gmail";
         private readonly By _usernameLocator = By.XPath("//input[@type='email']");
         private readonly By _enterPasswordButtonLocator = By.XPath("//span[text()='Далее']");
@@ -12,7 +13,13 @@ namespace SeleniumWebDriver.Gmail
 
         public LoginPage(IWebDriver driver) : base(driver)
         {
+            OpenPage();
             Wait.Until(ExpectedConditions.TitleContains(_driverTitle));
+        }
+
+        public void OpenPage()
+        {
+            Driver.Navigate().GoToUrl(_loginPagePath);
         }
 
         public LoginPage EnterUsername(string username)

@@ -6,19 +6,10 @@ using SeleniumWebDriver.MailRu;
 namespace SeleniumWebDriverTests
 {
     [TestFixture]
-    public class ChangeNicknameTest
+    public class ChangeNicknameTest : CommonConditions
     {
-        private IWebDriver _driver;
-        private const string _loginMailRuPagePath = "https://account.mail.ru/login";
         private const string _username = "seleniumtetst1";
         private const string _password = "tFgmQrQ3m32hNWx";
-
-        [SetUp]
-        public void Setup()
-        {
-            _driver = new FirefoxDriver();
-            _driver.Navigate().GoToUrl(_loginMailRuPagePath);
-        }
 
         [Test]
         public void LogInToGmail()

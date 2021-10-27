@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RunSettings>
   <TestRunParameters>
-    <Parameter name="browser" value="firefox" />
+    <Parameter name="browser" value="chrome" />
     <Parameter name="environment" value="dev" />
   </TestRunParameters>
 </RunSettings>

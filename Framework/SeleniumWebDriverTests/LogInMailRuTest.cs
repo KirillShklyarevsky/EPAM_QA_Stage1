@@ -6,10 +6,8 @@ using SeleniumWebDriver.MailRu;
 namespace SeleniumWebDriverTests
 {
     [TestFixture]
-    public class LogInMailRuTest
+    public class LogInMailRuTest : CommonConditions
     {
-        private IWebDriver _driver;
-        private const string _loginPagePath = "https://account.mail.ru/login";
         private const string _username = "seleniumtetst1";
         private const string _password = "tFgmQrQ3m32hNWx";
         private const string _incorrectUsername = "qwdqjw";
@@ -18,13 +16,6 @@ namespace SeleniumWebDriverTests
         private const string _errorEmptyPasswordMessage = "Поле «Пароль» должно быть заполнено";
         private const string _errorIncorrectUsernameMessage = "Такой аккаунт не зарегистрирован";
         private const string _errorIncorrectPasswordMessage = "Неверный пароль, попробуйте ещё раз";
-
-        [SetUp]
-        public void Setup()
-        {
-            _driver = new FirefoxDriver();
-            _driver.Navigate().GoToUrl(_loginPagePath);
-        }
 
         [Test]
         public void LogInWithValidUsernameAndPassword()

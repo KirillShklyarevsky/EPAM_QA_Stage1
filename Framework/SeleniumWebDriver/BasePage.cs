@@ -9,7 +9,7 @@ namespace SeleniumWebDriver
 
         public WebDriverWait Wait { get; }
 
-        public IWebDriver Driver { get; set; }
+        public IWebDriver Driver { get; }
 
         public BasePage(IWebDriver driver)
         {

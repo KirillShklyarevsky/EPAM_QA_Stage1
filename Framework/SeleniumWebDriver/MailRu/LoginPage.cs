@@ -5,6 +5,8 @@ namespace SeleniumWebDriver.MailRu
 {
     public class LoginPage : BasePage
     {
+
+        private const string _loginPagePath = "https://account.mail.ru/login";
         private readonly string _driverTitle = "Авторизация";
         private readonly By _usernameLocator = By.XPath("//input[@name='username']");
         private readonly By _enterPasswordButtonLocator = By.XPath("//button[@type='submit']");
@@ -14,7 +16,15 @@ namespace SeleniumWebDriver.MailRu
 
         public LoginPage(IWebDriver driver) : base(driver)
         {
+            OpenPage();
             Wait.Until(ExpectedConditions.TitleContains(_driverTitle));
+        }
+        
+        public LoginPage OpenPage()
+        {
+            Driver.Navigate().GoToUrl(_loginPagePath);
+
+            return this;
         }
 
         public LoginPage EnterUsername(string username)
@@ -54,7 +64,7 @@ namespace SeleniumWebDriver.MailRu
             Wait.Until(ExpectedConditions.ElementIsVisible(_logInButtonLocator));
             Driver.FindElement(_logInButtonLocator).Click();
 
-            return new LoginPage(Driver);
+            return this;
         }
 
         public InboxPage LogIn(string username, string password)

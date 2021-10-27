@@ -16,11 +16,12 @@ namespace SeleniumWebDriverTests
             SeleniumWebDriver.MailRu.LoginPage mailRuLoginPage = new SeleniumWebDriver.MailRu.LoginPage(_driver);
             User mailRuUser = UserCreator.MailRuUserWithCredentialsFromProperty();
             User gamilUser = UserCreator.GmailUserWithCredentialsFromProperty();
+            Letter letter = LetterCreator.CreateLetter();
 
 
             //act
             SeleniumWebDriver.MailRu.InboxPage mailRuInboxPage = mailRuLoginPage.LogIn(mailRuUser);
-            mailRuInboxPage.SendMessage(_text, gamilUser.Email);
+            mailRuInboxPage.SendMessage(letter);
             SeleniumWebDriver.Gmail.LoginPage gmailLoginPage = new SeleniumWebDriver.Gmail.LoginPage(_driver);
             SeleniumWebDriver.Gmail.InboxPage gmailInboxPage = gmailLoginPage.LogIn(gamilUser);
             gmailInboxPage.ReadLastMessage();

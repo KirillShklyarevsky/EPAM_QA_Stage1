@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using SeleniumWebDriver.Models;
 
 namespace SeleniumWebDriver.MailRu
 {
@@ -52,11 +53,11 @@ namespace SeleniumWebDriver.MailRu
             return this;
         }
 
-        public InboxPage SendMessage(string text, string receiverMail)
+        public InboxPage SendMessage(Letter letter)
         {
             ComposeMessage();
-            EnterReceiverMail(receiverMail);
-            EnterText(text);
+            EnterReceiverMail(letter.Receiver);
+            EnterText(letter.LetterText);
             PressSendMessageButton();
 
             return this;

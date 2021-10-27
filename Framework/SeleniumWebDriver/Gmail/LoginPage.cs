@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using SeleniumWebDriver.Models;
 
 namespace SeleniumWebDriver.Gmail
 {
@@ -54,11 +55,11 @@ namespace SeleniumWebDriver.Gmail
             return new InboxPage(Driver);
         }
 
-        public InboxPage LogIn(string username, string password)
+        public InboxPage LogIn(User user)
         {
-            EnterUsername(username);
+            EnterUsername(user.Email);
             PressPasswordButton();
-            EnterPassword(password);
+            EnterPassword(user.Password);
 
             return PressLogInButton();
         }

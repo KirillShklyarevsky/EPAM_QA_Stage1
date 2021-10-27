@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SeleniumWebDriver
+namespace SeleniumWebDriver.Models
 {
     public class User
     {

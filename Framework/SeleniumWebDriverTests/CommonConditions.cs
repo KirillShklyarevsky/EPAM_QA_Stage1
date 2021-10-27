@@ -13,5 +13,11 @@ namespace SeleniumWebDriverTests
         {
             _driver = DriverSingleton.GetDriver();
         }
+
+        [TearDown]
+        public void DriverQuit()
+        {
+            DriverSingleton.CloseDriver();
+        }
     }
 }

@@ -1,24 +1,22 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
 using SeleniumWebDriver.MailRu;
+using SeleniumWebDriver.Models;
+using SeleniumWebDriver.Service;
 
 namespace SeleniumWebDriverTests
 {
     [TestFixture]
     public class ChangeNicknameTest : CommonConditions
     {
-        private const string _username = "seleniumtetst1";
-        private const string _password = "tFgmQrQ3m32hNWx";
-
         [Test]
         public void LogInToGmail()
         {
             //arrange
             LoginPage loginPage = new LoginPage(_driver);
+            User user = UserCreator.MailRuUserWithCredentialsFromProperty();
 
             //act
-            InboxPage inboxPage = loginPage.LogIn(_username, _password);
+            InboxPage inboxPage = loginPage.LogIn(user);
             inboxPage.ReadLastMessage();
             string expected = inboxPage.GetMessageContent();
             string[] newNickname = expected.Split(' ');
@@ -30,12 +28,6 @@ namespace SeleniumWebDriverTests
 
             //assert
             Assert.AreEqual(expected, actualNickname);
-        }
-
-        [TearDown]
-        public void DriverQuit()
-        {
-            _driver.Quit();
         }
     }
 }

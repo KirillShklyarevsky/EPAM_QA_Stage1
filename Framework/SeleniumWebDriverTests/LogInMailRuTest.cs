@@ -1,17 +1,13 @@
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
 using SeleniumWebDriver.MailRu;
+using SeleniumWebDriver.Models;
+using SeleniumWebDriver.Service;
 
 namespace SeleniumWebDriverTests
 {
     [TestFixture]
     public class LogInMailRuTest : CommonConditions
     {
-        private const string _username = "seleniumtetst1";
-        private const string _password = "tFgmQrQ3m32hNWx";
-        private const string _incorrectUsername = "qwdqjw";
-        private const string _incorrectPassword = "jfewfjwo";
         private const string _errorEmptyUsernameMessage = "Поле «Имя аккаунта» должно быть заполнено";
         private const string _errorEmptyPasswordMessage = "Поле «Пароль» должно быть заполнено";
         private const string _errorIncorrectUsernameMessage = "Такой аккаунт не зарегистрирован";
@@ -22,9 +18,10 @@ namespace SeleniumWebDriverTests
         {
             //arrange
             LoginPage loginPage = new LoginPage(_driver);
-            
+            User user = UserCreator.MailRuUserWithCredentialsFromProperty();
+
             //act
-            var actualPage = loginPage.LogIn(_username, _password);
+            var actualPage = loginPage.LogIn(user);
 
             //assert
             Assert.IsTrue(actualPage is InboxPage);
@@ -35,9 +32,10 @@ namespace SeleniumWebDriverTests
         {
             //arrange
             LoginPage loginPage = new LoginPage(_driver);
+            User user = UserCreator.UserWithEmptyUsername();
 
             //act
-            loginPage.EnterUsername(string.Empty);
+            loginPage.EnterUsername(user.Email);
             loginPage.PressPasswordButton();
             string actual = loginPage.GetErrorMessage();
 
@@ -50,11 +48,12 @@ namespace SeleniumWebDriverTests
         {
             //arrange
             LoginPage loginPage = new LoginPage(_driver);
+            User user = UserCreator.UserWithEmptyPassword();
 
             //act
-            loginPage.EnterUsername(_username);
+            loginPage.EnterUsername(user.Email);
             loginPage.PressPasswordButton();
-            loginPage.EnterPassword(string.Empty);
+            loginPage.EnterPassword(user.Password);
             loginPage.PressLogInButtonWithExpectedError();
             string actual = loginPage.GetErrorMessage();
 
@@ -63,13 +62,15 @@ namespace SeleniumWebDriverTests
         }
 
         [Test]
-        public void LogInWithIncorrectUsername()
+        public void LogInWithIvalidUsername()
         {
             //arrange
             LoginPage loginPage = new LoginPage(_driver);
+            User user = UserCreator.UserWithInvalidUsername();
+
 
             //act
-            loginPage.EnterUsername(_incorrectUsername);
+            loginPage.EnterUsername(user.Email);
             loginPage.PressPasswordButton();
             string actual = loginPage.GetErrorMessage();
 
@@ -78,26 +79,21 @@ namespace SeleniumWebDriverTests
         }
 
         [Test]
-        public void LogInWithIncorrectPassword()
+        public void LogInWithInvalidPassword()
         {
             //arrange
             LoginPage loginPage = new LoginPage(_driver);
+            User user = UserCreator.UserWithInvalidPassword();
 
             //act
-            loginPage.EnterUsername(_username);
+            loginPage.EnterUsername(user.Email);
             loginPage.PressPasswordButton();
-            loginPage.EnterPassword(_incorrectPassword);
+            loginPage.EnterPassword(user.Password);
             loginPage.PressLogInButtonWithExpectedError();
             string actual = loginPage.GetErrorMessage();
 
             //assert
             Assert.AreEqual(_errorIncorrectPasswordMessage, actual);
-        }
-
-        [TearDown]
-        public void DriverQuit()
-        {
-            _driver.Quit();
         }
     }
 }

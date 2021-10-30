@@ -30,6 +30,7 @@ namespace SeleniumWebDriverTests
         }
 
         [Test]
+        [Category("All")]
         [Category("Smoke")]
         public void LogInWithEmptyUsername()
         {

@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumWebDriver.Models;
+using NLog;
 
 namespace SeleniumWebDriver.MailRu
 {
@@ -16,16 +17,19 @@ namespace SeleniumWebDriver.MailRu
         private readonly By _messageTextLocator = By.XPath("//div[@dir='ltr']");
         private readonly By _optionsButtonLocator = By.XPath("//div[@class='ph-auth svelte-1xjymf4']");
         private readonly By _settingsButtonLocator = By.XPath("//div[text()='Личные данные']");
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         public InboxPage(IWebDriver driver) : base(driver)
         {
             Wait.Until(ExpectedConditions.TitleContains(_driverTitle));
+            _logger.Info("MailRu inbox page open");
         }
 
         public InboxPage ComposeMessage()
         {
             Wait.Until(ExpectedConditions.ElementIsVisible(_composeMessageButtonLocator));
             Driver.FindElement(_composeMessageButtonLocator).Click();
+            _logger.Info("Message composed");
 
             return this;
         }
@@ -34,6 +38,7 @@ namespace SeleniumWebDriver.MailRu
         {
             Wait.Until(ExpectedConditions.ElementIsVisible(_receiverMailInputLocator));
             Driver.FindElement(_receiverMailInputLocator).SendKeys(receiverMail);
+            _logger.Info("Receiver mail entered");
 
             return this;
         }
@@ -42,6 +47,7 @@ namespace SeleniumWebDriver.MailRu
         {
             Wait.Until(ExpectedConditions.ElementIsVisible(_textBoxLocator));
             Driver.FindElement(_textBoxLocator).SendKeys(text);
+            _logger.Info("Message text entered");
 
             return this;
         }
@@ -49,6 +55,7 @@ namespace SeleniumWebDriver.MailRu
         {
             Wait.Until(ExpectedConditions.ElementIsVisible(_sendMessageLocator));
             Driver.FindElement(_sendMessageLocator).Click();
+            _logger.Info("Message send");
 
             return this;
         }
@@ -59,6 +66,7 @@ namespace SeleniumWebDriver.MailRu
             EnterReceiverMail(letter.Receiver);
             EnterText(letter.LetterText);
             PressSendMessageButton();
+            _logger.Info("Message send");
 
             return this;
         }
@@ -67,6 +75,7 @@ namespace SeleniumWebDriver.MailRu
         {
             Wait.Until(ExpectedConditions.ElementIsVisible(_lastMessageLocator));
             Driver.FindElement(_lastMessageLocator).Click();
+            _logger.Info("Last message opened");
 
             return this;
         }
@@ -75,12 +84,14 @@ namespace SeleniumWebDriver.MailRu
         {
             Wait.Until(ExpectedConditions.ElementIsVisible(_messageTextLocator));
             return Driver.FindElement(_messageTextLocator).Text;
+            _logger.Info("Message content readed");
         }
 
         public InboxPage OpenOptions()
         {
             Wait.Until(ExpectedConditions.ElementIsVisible(_optionsButtonLocator));
             Driver.FindElement(_optionsButtonLocator).Click();
+            _logger.Info("MailRu accaunt options opened");
 
             return this;
         }
@@ -89,6 +100,7 @@ namespace SeleniumWebDriver.MailRu
         {
             Wait.Until(ExpectedConditions.ElementIsVisible(_settingsButtonLocator));
             Driver.FindElement(_settingsButtonLocator).Click();
+            _logger.Info("MailRu accaunt settings opened");
 
             return new SettingsPage(Driver);
         }

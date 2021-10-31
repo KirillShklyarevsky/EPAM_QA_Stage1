@@ -6,7 +6,7 @@ namespace SeleniumWebDriver.Service
     {
         public static Letter CreateLetter()
         {
-            return new Letter("Hello World!", UserCreator.GmailUserWithCredentialsFromProperty().Email);
+            return new Letter("Hello World", UserCreator.GmailUserWithCredentialsFromProperty().Email);
         }
     }
 }

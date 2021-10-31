@@ -7,8 +7,6 @@ namespace SeleniumWebDriverTests
     [TestFixture]
     public class SendMessageTest : CommonConditions
     {
-        private const string _text = "Hello World";
-
         [Test]
         [Category("All")]
         public void LogInToGmail()
@@ -32,7 +30,7 @@ namespace SeleniumWebDriverTests
             gmailInboxPage.SendMessage();
 
             //assert
-            Assert.AreEqual(_text, actual);
+            Assert.AreEqual(letter.LetterText, actual);
         }
     }
 }

@@ -23,11 +23,17 @@ namespace SeleniumWebDriver.Driver
                     switch (TestContext.Parameters["browser"])
                     {
                         case "firefox":
-                            _driver = new FirefoxDriver();
+                            var option = new FirefoxOptions();
+                            option.AddArgument("headless");
+                            option.AddArgument("--disable-popup-blocking");
+                            _driver = new FirefoxDriver(option);
                             break;
                         default:
+                            var options = new ChromeOptions();
+                            options.AddArgument("headless");
+                            options.AddArgument("--disable-popup-blocking");
                             new DriverManager().SetUpDriver(new ChromeConfig());
-                            _driver = new ChromeDriver();
+                            _driver = new ChromeDriver(options);
                             break;
                     }
                     _driver.Manage().Window.Maximize();

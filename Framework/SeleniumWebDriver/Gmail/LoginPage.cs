@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumWebDriver.Models;
+using NLog;
 
 namespace SeleniumWebDriver.Gmail
 {
@@ -11,6 +12,7 @@ namespace SeleniumWebDriver.Gmail
         private readonly By _usernameLocator = By.XPath("//input[@type='email']");
         private readonly By _enterPasswordButtonLocator = By.XPath("//span[text()='Далее']");
         private readonly By _passwordLocator = By.XPath("//input[@name='password']");
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         public LoginPage(IWebDriver driver) : base(driver)
         {
@@ -21,12 +23,14 @@ namespace SeleniumWebDriver.Gmail
         public void OpenPage()
         {
             Driver.Navigate().GoToUrl(_loginPagePath);
+            _logger.Info("Gmail login page open");
         }
 
         public LoginPage EnterUsername(string username)
         {
             Wait.Until(ExpectedConditions.ElementIsVisible(_usernameLocator));
             Driver.FindElement(_usernameLocator).SendKeys(username);
+            _logger.Info("Userename entered");
 
             return this;
         }
@@ -35,6 +39,7 @@ namespace SeleniumWebDriver.Gmail
         {
             Wait.Until(ExpectedConditions.ElementIsVisible(_enterPasswordButtonLocator));
             Driver.FindElement(_enterPasswordButtonLocator).Click();
+            _logger.Info("Password field opened");
 
             return this;
         }
@@ -43,6 +48,7 @@ namespace SeleniumWebDriver.Gmail
         {
             Wait.Until(ExpectedConditions.ElementIsVisible(_passwordLocator));
             Driver.FindElement(_passwordLocator).SendKeys(password);
+            _logger.Info("Password entered");
 
             return this;
         }
@@ -51,6 +57,7 @@ namespace SeleniumWebDriver.Gmail
         {
             Wait.Until(ExpectedConditions.ElementIsVisible(_enterPasswordButtonLocator));
             Driver.FindElement(_enterPasswordButtonLocator).Click();
+            _logger.Info("User logged in");
 
             return new InboxPage(Driver);
         }
@@ -60,6 +67,8 @@ namespace SeleniumWebDriver.Gmail
             EnterUsername(user.Email);
             PressPasswordButton();
             EnterPassword(user.Password);
+
+            _logger.Info("User logged in");
 
             return PressLogInButton();
         }

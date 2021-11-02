@@ -1,10 +1,6 @@
 {
   "testdata.mailru.user.name": "seleniumtetst1",
-  "testdata.mailru.user.password": "tFgmQrQ3m32hNWx",
+  "testdata.mailru.user.password": "qwdqjw",
   "testdata.gmail.user.name": "seleniumtest236@gmail.com",
-  "testdata.gmail.user.password": "tFgmQrQ3m32hNWx"
-  //"testdata.mailru.user.name": "seleniumtetst1",
-  //"testdata.mailru.user.password": "qwdqjw",
-  //"testdata.gmail.user.name": "seleniumtest236@gmail.com",
-  //"testdata.gmail.user.password": "qwdqjw"
+  "testdata.gmail.user.password": "qwdqjw"
 }

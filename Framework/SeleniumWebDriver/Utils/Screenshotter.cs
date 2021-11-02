@@ -15,7 +15,7 @@ namespace SeleniumWebDriver.Utils
 
         public string CreateLocation()
         {
-            string saveLocation = "/SeleniumScreenshots/";
+            string saveLocation = "SeleniumScreenshots/";
 
             if (!Directory.Exists(saveLocation))
             {

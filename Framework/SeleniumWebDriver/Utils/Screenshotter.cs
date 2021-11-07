@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using OpenQA.Selenium;
 using System.IO;
 
@@ -10,21 +8,21 @@ namespace SeleniumWebDriver.Utils
     {
         public void MakeScreenshot(IWebDriver driver)
         {
-            ((ITakesScreenshot)driver).GetScreenshot().SaveAsFile(GetCurrentTimeAsString(), ScreenshotImageFormat.Png);
+            ((ITakesScreenshot)driver).GetScreenshot().SaveAsFile(GetCurrentFullFileNameAsString(), ScreenshotImageFormat.Png);
         }
 
         public string CreateLocation()
         {
-            string saveLocation = "SeleniumScreenshots/"; // locationpath
+            string locationPath = "SeleniumScreenshots/";
 
-            if (!Directory.Exists(saveLocation))
+            if (!Directory.Exists(locationPath))
             {
-                Directory.CreateDirectory(saveLocation);
+                Directory.CreateDirectory(locationPath);
             }
-            return saveLocation;
+            return locationPath;
         }
 
-        public string GetCurrentTimeAsString() // 
+        public string GetCurrentFullFileNameAsString()
         {
             return CreateLocation() + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".png";
         }

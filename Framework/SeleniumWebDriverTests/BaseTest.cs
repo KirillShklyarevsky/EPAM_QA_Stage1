@@ -6,7 +6,7 @@ using SeleniumWebDriver.Utils;
 
 namespace SeleniumWebDriverTests
 {
-    public class CommonConditions
+    public class BaseTest
     {
         protected IWebDriver _driver;
 

@@ -2,14 +2,8 @@
 {
     public class Letter
     {
-        public string LetterText { get; }
+        public string LetterText { get; set; }
 
-        public string Receiver { get; }
-
-        public Letter(string letterText, string receiver)
-        {
-            LetterText = letterText;
-            Receiver = receiver;
-        }
+        public string Receiver { get; set; }
     }
 }

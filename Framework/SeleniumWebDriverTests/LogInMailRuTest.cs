@@ -6,7 +6,7 @@ using SeleniumWebDriver.Service;
 namespace SeleniumWebDriverTests
 {
     [TestFixture]
-    public class LogInMailRuTest : CommonConditions
+    public class LogInMailRuTest : BaseTest
     {
         private const string _errorEmptyUsernameMessage = "Поле «Имя аккаунта» должно быть заполнено";
         private const string _errorEmptyPasswordMessage = "Поле «Пароль» должно быть заполнено";
@@ -18,14 +18,11 @@ namespace SeleniumWebDriverTests
         [Category("Smoke")]
         public void LogInWithValidUsernameAndPassword()
         {
-            //arrange
             LoginPage loginPage = new LoginPage(_driver);
             User user = UserCreator.MailRuUserWithCredentialsFromProperty();
 
-            //act
             var actualPage = loginPage.LogIn(user);
 
-            //assert
             Assert.IsTrue(actualPage is InboxPage);
         }
 
@@ -34,16 +31,13 @@ namespace SeleniumWebDriverTests
         [Category("Smoke")]
         public void LogInWithEmptyUsername()
         {
-            //arrange
             LoginPage loginPage = new LoginPage(_driver);
             User user = UserCreator.UserWithEmptyUsername();
 
-            //act
-            loginPage.EnterUsername(user.Email);
-            loginPage.PressPasswordButton();
-            string actual = loginPage.GetErrorMessage();
+            string actual = loginPage.EnterUsername(user.Email)
+                                     .PressPasswordButton()
+                                     .GetErrorMessage();
 
-            //assert
             Assert.AreEqual(_errorEmptyUsernameMessage, actual);
         }
 
@@ -51,18 +45,15 @@ namespace SeleniumWebDriverTests
         [Category("All")]
         public void LogInWithEmptyPassword()
         {
-            //arrange
             LoginPage loginPage = new LoginPage(_driver);
             User user = UserCreator.UserWithEmptyPassword();
 
-            //act
-            loginPage.EnterUsername(user.Email);
-            loginPage.PressPasswordButton();
-            loginPage.EnterPassword(user.Password);
-            loginPage.PressLogInButtonWithExpectedError();
-            string actual = loginPage.GetErrorMessage();
+            string actual = loginPage.EnterUsername(user.Email)
+                                     .PressPasswordButton()
+                                     .EnterPassword(user.Password)
+                                     .PressLogInButtonWithExpectedError()
+                                     .GetErrorMessage();
 
-            //assert
             Assert.AreEqual(_errorEmptyPasswordMessage, actual);
         }
 
@@ -70,17 +61,14 @@ namespace SeleniumWebDriverTests
         [Category("All")]
         public void LogInWithIvalidUsername()
         {
-            //arrange
             LoginPage loginPage = new LoginPage(_driver);
             User user = UserCreator.UserWithInvalidUsername();
 
 
-            //act
-            loginPage.EnterUsername(user.Email);
-            loginPage.PressPasswordButton();
-            string actual = loginPage.GetErrorMessage();
+            string actual = loginPage.EnterUsername(user.Email)
+                                     .PressPasswordButton()
+                                     .GetErrorMessage();
 
-            //assert
             Assert.AreEqual(_errorIncorrectUsernameMessage, actual);
         }
 
@@ -88,18 +76,15 @@ namespace SeleniumWebDriverTests
         [Category("All")]
         public void LogInWithInvalidPassword()
         {
-            //arrange
             LoginPage loginPage = new LoginPage(_driver);
             User user = UserCreator.UserWithInvalidPassword();
 
-            //act
-            loginPage.EnterUsername(user.Email);
-            loginPage.PressPasswordButton();
-            loginPage.EnterPassword(user.Password);
-            loginPage.PressLogInButtonWithExpectedError();
-            string actual = loginPage.GetErrorMessage();
+            string actual = loginPage.EnterUsername(user.Email)
+                                     .PressPasswordButton()
+                                     .EnterPassword(user.Password)
+                                     .PressLogInButtonWithExpectedError()
+                                     .GetErrorMessage();
 
-            //assert
             Assert.AreEqual(_errorIncorrectPasswordMessage, actual);
         }
     }

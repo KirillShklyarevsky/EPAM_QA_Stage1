@@ -13,32 +13,32 @@ namespace SeleniumWebDriver.Service
 
         public static User MailRuUserWithCredentialsFromProperty()
         {
-            return new User(TestDataReader.GetTestData(userNameMailRu), TestDataReader.GetTestData(userPasswordMailRu));
+            return new User { Email = TestDataReader.GetTestData(userNameMailRu), Password = TestDataReader.GetTestData(userPasswordMailRu) };
         }
 
         public static User GmailUserWithCredentialsFromProperty()
         {
-            return new User(TestDataReader.GetTestData(userNameGmail), TestDataReader.GetTestData(userPasswordGmail));
+            return new User { Email = TestDataReader.GetTestData(userNameGmail), Password = TestDataReader.GetTestData(userPasswordGmail) };
         }
 
         public static User UserWithEmptyUsername()
         {
-            return new User(string.Empty, TestDataReader.GetTestData(userPasswordMailRu));
+            return new User { Email = string.Empty, Password = TestDataReader.GetTestData(userPasswordMailRu) };
         }
 
         public static User UserWithEmptyPassword()
         {
-            return new User(TestDataReader.GetTestData(userNameMailRu), string.Empty);
+            return new User { Email = TestDataReader.GetTestData(userNameMailRu), Password = string.Empty };
         }
 
         public static User UserWithInvalidUsername()
         {
-            return new User(_incorrectUsername, TestDataReader.GetTestData(userPasswordGmail));
+            return new User { Email = _incorrectUsername, Password = TestDataReader.GetTestData(userPasswordGmail) };
         }
 
         public static User UserWithInvalidPassword()
         {
-            return new User(TestDataReader.GetTestData(userNameMailRu), _incorrectPassword);
+            return new User { Email = TestDataReader.GetTestData(userNameMailRu), Password = _incorrectPassword };
         }
     }
 }

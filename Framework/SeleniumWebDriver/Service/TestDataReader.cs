@@ -7,7 +7,7 @@ namespace SeleniumWebDriver.Service
 {
     public class TestDataReader
     {
-        private static readonly string _filePath = "../../../../SeleniumWebDriver/Resources/";
+        private static readonly string _filePath = "Resources/";
         private static readonly string _environment = TestContext.Parameters["environment"];
 
         public static string GetTestData(string key)

@@ -3,5 +3,6 @@
   <TestRunParameters>
     <Parameter name="browser" value="firefox" />
     <Parameter name="environment" value="qa" />
+    <Parameter name="waitTime" value="15" />
   </TestRunParameters>
 </RunSettings>

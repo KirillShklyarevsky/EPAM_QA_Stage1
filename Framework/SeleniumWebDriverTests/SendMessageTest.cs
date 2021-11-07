@@ -5,7 +5,7 @@ using SeleniumWebDriver.Service;
 namespace SeleniumWebDriverTests
 {
     [TestFixture]
-    public class SendMessageTest : CommonConditions
+    public class SendMessageTest : BaseTest
     {
         [Test]
         [Category("All")]
@@ -25,8 +25,7 @@ namespace SeleniumWebDriverTests
             SeleniumWebDriver.Gmail.InboxPage gmailInboxPage = gmailLoginPage.LogIn(gamilUser);
             gmailInboxPage.ReadLastMessage();
             string actual = gmailInboxPage.GetMessageContent();
-            gmailInboxPage.ReplyMessage();
-            gmailInboxPage.EnterMessageText("Aaa Bbb");
+            gmailInboxPage.ReplyMessage().EnterMessageText("Aaa Bbb");
             gmailInboxPage.SendMessage();
 
             //assert

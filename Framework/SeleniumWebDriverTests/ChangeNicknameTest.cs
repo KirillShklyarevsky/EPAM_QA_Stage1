@@ -6,7 +6,7 @@ using SeleniumWebDriver.Service;
 namespace SeleniumWebDriverTests
 {
     [TestFixture]
-    public class ChangeNicknameTest : CommonConditions
+    public class ChangeNicknameTest : BaseTest
     {
         [Test]
         [Category("All")]

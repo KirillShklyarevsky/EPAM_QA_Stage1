@@ -15,7 +15,7 @@ namespace SeleniumWebDriver.Utils
 
         public string CreateLocation()
         {
-            string saveLocation = "SeleniumScreenshots/";
+            string saveLocation = "SeleniumScreenshots/"; // locationpath
 
             if (!Directory.Exists(saveLocation))
             {
@@ -24,7 +24,7 @@ namespace SeleniumWebDriver.Utils
             return saveLocation;
         }
 
-        public string GetCurrentTimeAsString()
+        public string GetCurrentTimeAsString() // 
         {
             return CreateLocation() + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".png";
         }
